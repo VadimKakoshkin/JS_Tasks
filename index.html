@@ -3,69 +3,22 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Номера домов</title>
-    <link rel="stylesheet" href="https://code.s3.yandex.net/web-code/entrance-test/lesson-1/task-4/fonts.css" />
+    <!-- <link rel="stylesheet" href="https://code.s3.yandex.net/web-code/entrance-test/lesson-1/task-5/fonts.css" /> -->
     <link rel="stylesheet" href="./style.css" />
+    <title>var или не var? Вот в чем вопрос</title>
   </head>
   <body class="page">
-    <div class="page__wrapper">
-      <img src="https://code.s3.yandex.net/web-code/entrance-test/forest-top.svg" alt="" class="forest forest_pos_top" />
-      <div class="marker marker_type_odd marker_pos_top-left">
-        <span class="marker__text">?</span>
+    <main class='content'>
+      <p class='content__text'>Введите число:</p>
+      <form class='form' name="formWithInput">
+        <input type='number' class='form__input' min='0'></input>
+      </form>
+      <p class='content__text'>Результат функции:</p>
+      <div class='content__image'>
+        <p class='content__result'>*</p>
       </div>
-      <img
-        src="https://code.s3.yandex.net/web-code/entrance-test/building-4.svg"
-        alt=""
-        class="building building_pos_top-left"
-      />
-      <div class="marker marker_type_odd marker_pos_top-middle">
-        <span class="marker__text">?</span>
-      </div>
-      <img
-        src="https://code.s3.yandex.net/web-code/entrance-test/building-5.svg"
-        alt=""
-        class="building building_pos_top-middle"
-      />
-      <div class="marker marker_type_odd marker_pos_top-right">
-        <span class="marker__text">?</span>
-      </div>
-      <img
-        src="https://code.s3.yandex.net/web-code/entrance-test/building-6.svg"
-        alt=""
-        class="building building_pos_top-right"
-      />
-      <img src="https://code.s3.yandex.net/web-code/entrance-test/road.svg" alt="" class="road" />
-      <div class="marker marker_type_even marker_pos_bottom-left">
-        <span class="marker__text">?</span>
-      </div>
-      <img
-        src="https://code.s3.yandex.net/web-code/entrance-test/building-1.svg"
-        alt=""
-        class="building building_pos_bottom-left"
-      />
-      <div class="marker marker_type_even marker_pos_bottom-middle">
-        <span class="marker__text">?</span>
-      </div>
-      <img
-        src="https://code.s3.yandex.net/web-code/entrance-test/building-2.svg"
-        alt=""
-        class="building building_pos_bottom-middle"
-      />
-      <div class="marker marker_type_even marker_pos_bottom-right">
-        <span class="marker__text">?</span>
-      </div>
-      <img
-        src="https://code.s3.yandex.net/web-code/entrance-test/building-3.svg"
-        alt=""
-        class="building building_pos_bottom-right"
-      />
-      <img
-        src="https://code.s3.yandex.net/web-code/entrance-test/forest-bottom.svg"
-        alt=""
-        class="forest forest_pos_bottom"
-      />
-    </div>
+      <p class='content__text' id='congratulation'></p>
+    </main>
     <script src="./task.js"></script>
-    <script src="https://code.s3.yandex.net/web-code/entrance-test/lesson-1/task-4/visualizer.js"></script>
   </body>
 </html>
