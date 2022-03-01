@@ -1,38 +1,26 @@
 <!DOCTYPE html>
 <html lang="ru">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Возраст на двух планетах</title>
-    <link rel="stylesheet" href="https://code.s3.yandex.net/web-code/entrance-test/lesson-1/task-2/fonts.css" />
-    <link rel="stylesheet" href="./css/style.css" />
-  </head>
-  <body class="page">
-    <div class="parallax">
-      <img
-        class="parallax__item parallax__item_type_stars"
-        data-depth="0.2"
-        src="https://code.s3.yandex.net/web-code/entrance-test/stars.png"
-        alt=""
-      />
-      <img
-        class="parallax__item parallax__item_type_nebula"
-        data-depth="0.6"
-        src="https://code.s3.yandex.net/web-code/entrance-test/nebula.png"
-        alt=""
-      />
-    </div>
-    <div class="planets">
-      <div class="planets__item planets__item_type_earth">
-        <p class="planets__age">Возраст на Земле</p>
-      </div>
-      <div class="planets__item planets__item_type_mars">
-        <p class="planets__age">Возраст на Марсе</p>
-      </div>
-    </div>
-    <script src="https://code.s3.yandex.net/web-code/libs/parallax.min.js"></script>
-    <script src="https://code.s3.yandex.net/web-code/entrance-test/lesson-1/task-2/parallax.js"></script>
-    <script src="./js/script.js" defer></script>
-    <script src="https://code.s3.yandex.net/web-code/entrance-test/lesson-1/task-2/visualizer.js"></script>
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Блок и массивы</title>
+  <link rel="stylesheet" href="https://code.s3.yandex.net/web-code/entrance-test/lesson-1/task-3/fonts.css">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body class="page">
+  <img src="https://code.s3.yandex.net/web-code/entrance-test/illustration.svg" alt="" class="page__illustration">
+  <h1 class="page__title">Александр Блок</h1>
+  <ul class="words">
+    <li class="words__item">Ночь</li>
+    <li class="words__item">Улица</li>
+    <li class="words__item">Фонарь</li>
+    <li class="words__item">Аптека</li>
+    <li class="words__item">Бессмысленный</li>
+    <li class="words__item">Тусклый</li>
+    <li class="words__item">Свет</li>
+  </ul>
+  <p class="result page__result"><span class="result__icon"></span><span class="result__text"></span></p>
+  <script src="./task.js"></script>
+  <script src="https://code.s3.yandex.net/web-code/entrance-test/lesson-1/task-3/visualizer.js"></script>
+</body>
 </html>
