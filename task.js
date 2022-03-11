@@ -44,28 +44,28 @@ function template(item) {
       <p class="search__finding-name">
           ${item.full_name}
       </p>
+      <span class="search__finding-description">
+          ${item.description}
+      </span>
 	`;
   return newElement;
 }
 
 async function onSubmit(event) {
-  // ваш код
-  let input = document.querySelector('.search__textfield')
+  //ваш код из предыдущего задания
   event.preventDefault();
   onSubmitStart();
-  await fetch(`https://api.nomoreparties.co/github-search?q=${input.value}`)
-    .then(response => {
-      return response.json();
-    })
+  await fetch(
+    `https://api.nomoreparties.co/github-search?q=${event.target.elements['title'].value}`
+  )
+    .then(response => response.json())
     .then(data => {
-      if (data.total_count === 0) {
-        renderEmptyResults();
+      const { items, total_count } = data;
+      if (total_count) {
+        renderCount(total_count);
+        items.forEach(item => resultsContainer.appendChild(template(item)));
       } else {
-        console.log("data", data.items);
-        renderCount(data.total_count);
-        data.items.forEach(item => {
-          resultsContainer.appendChild(template(item));
-        });
+        renderEmptyResults();
       }
     })
     .catch(() => {
@@ -73,4 +73,4 @@ async function onSubmit(event) {
     });
 }
 
-form.addEventListener("submit", onSubmit);
+form.addEventListener('submit', onSubmit);
