@@ -1,33 +1,76 @@
-function getDomNodesBySelector(selector) {
-  let array = [];
-  let prices = document.querySelectorAll('.price-value');
+const form = document.querySelector('.search__form');
+const resultsContainer = document.querySelector('.search__findings-list');
+const countContainer = document.querySelector('.search__findings');
+const errorContainer = document.querySelector('.search__error');
 
-  for (let i = 0; i < prices.length; i++) {
-    let value = Number(prices[i].textContent);
-    array.push(value);
-  }
+const renderError = () => {
+  errorContainer.innerHTML = `
+        <img src="https://code.s3.yandex.net/web-code/entrance-test/search.svg" alt="" class="search__error-icon" />
+        <p class="search__error-message">
+            Произошла ошибка...
+        </p>
+  `;
+  countContainer.innerHTML = '';
+};
 
-  return array;
+const renderEmptyResults = () => {
+  errorContainer.innerHTML = `
+        <img src="https://code.s3.yandex.net/web-code/entrance-test/search.svg" alt="" class="search__error-icon" />
+        <p class="search__error-message">
+            По вашему запросу ничего не найдено, попробуйте уточнить запрос
+        </p>
+  `;
+  countContainer.innerHTML = '';
+};
+
+const renderCount = count => {
+  countContainer.innerHTML = `
+      Найдено <span class="search__findings-amount">${count.toLocaleString(
+        'ru-RU'
+      )}</span> результатов
+  `;
+};
+
+const onSubmitStart = () => {
+  countContainer.innerHTML = `Загрузка...`;
+  resultsContainer.innerHTML = '';
+  errorContainer.innerHTML = '';
+};
+
+function template(item) {
+  const newElement = document.createElement('li');
+  newElement.classList.add('search__finding-item');
+  newElement.innerHTML = `
+      <p class="search__finding-name">
+          ${item.full_name}
+      </p>
+	`;
+  return newElement;
 }
 
-function applyDiscount() {
-  // Ваш код
-  let discountBtn = document.querySelector('.total__button');
-  let totalSum = document.querySelector('.total-price-value');
-  let values = getDomNodesBySelector('.price-value');
-
-  function endSum () {
-    sum = totalSum.textContent * 0.15;
-    endSum = totalSum.textContent - sum;
-    totalSum.textContent = endSum.toFixed(0);
-    values.forEach(element => {
-      sumProc = element.textContent * 0.15;
-      endSum = element.textContent - sumProc;
-      element.textContent = endSum.toFixed(0);
+async function onSubmit(event) {
+  // ваш код
+  let input = document.querySelector('.search__textfield')
+  event.preventDefault();
+  onSubmitStart();
+  await fetch(`https://api.nomoreparties.co/github-search?q=${input.value}`)
+    .then(response => {
+      return response.json();
+    })
+    .then(data => {
+      if (data.total_count === 0) {
+        renderEmptyResults();
+      } else {
+        console.log("data", data.items);
+        renderCount(data.total_count);
+        data.items.forEach(item => {
+          resultsContainer.appendChild(template(item));
+        });
+      }
+    })
+    .catch(() => {
+      renderError();
     });
-    discountBtn.style.visibility = "hidden";
-  }
-  discountBtn.addEventListener('click', endSum);
 }
 
-applyDiscount();
+form.addEventListener("submit", onSubmit);
