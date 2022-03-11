@@ -16,18 +16,14 @@
 }
 
 .catalog {
-  /*  Ваш код  */
   display: flex;
   flex-wrap: wrap;
-  align-items: flex-start;
-  justify-content: space-between;
 }
 
 .page__catalog {
   width: 70%;
   margin: auto;
 }
-
 .card {
   flex-grow: 1;
   flex-basis: 20%;
@@ -75,4 +71,14 @@
   font-size: 12px;
   line-height: 16px;
   margin: 0 0 5px;
+}
+
+@media (max-width: 380px) {
+  .page__catalog {
+    width: 95%;
+  }
+
+  .card {
+    flex-basis: 40%;
+  }
 }
